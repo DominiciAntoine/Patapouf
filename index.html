@@ -84,6 +84,8 @@
         font-family: "Montserrat", sans-serif;
         font-weight: bold;
       }
+
+       [data-ozono] [data-wrap] { touch-action: pan-y; }
     </style>
   </head>
   <body class="bg-white text-stone-800 antialiased mont">
@@ -259,8 +261,10 @@
         <div class="grid lg:grid-cols-[1.2fr_.9fr] items-stretch">
           <!-- Bloc texte blanc bord rose -->
           <article
-            class="bg-white/95 rounded-l-[28px] border-2 border-[#f3b7c2] border-r-0 sm:border-2 sm:border-b-0 sm:rounded-t-[28px] sm:rounded-b-none p-6 md:p-8"
-          >
+  class="bg-white/95 border-2 border-[#f3b7c2] rounded-[28px] p-6 md:p-8
+         rounded-b-none border-b-0
+         lg:rounded-b-[28px] lg:border-b-2 lg:rounded-br-none lg:rounded-r-none lg:border-r-0"
+>
             <h3 class="text-center text-2xl titlefont text-gold">
               Une approche unique
             </h3>
@@ -271,35 +275,34 @@
               problématiques :
             </p>
 
-            <!-- slider à 2 “lignées” -->
-            <div class="relative mt-6" data-ozono>
-              <div
-                class="relative px-12 min-h-[240px] md:min-h-[280px] lg:min-h-[320px]"
-                data-wrap
-              >
-                <!-- bouton précédent -->
-                <button
-                  type="button"
-                  aria-label="Précédent"
-                  class="hidden cursor-pointer sm:flex absolute -left-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full text-gold hover:bg-gold/10 transition z-20"
-                  data-prev
-                >
-                  <img src="assets/icon/left.png" alt="" />
-                </button>
+            <div class="relative mt-6" data-ozono data-interval="5500">
+  <div
+    class="relative px-12 min-h-[300px] md:min-h-[280px] lg:min-h-[320px]"
+    data-wrap
+  >
+    <!-- bouton précédent -->
+    <button
+      type="button"
+      aria-label="Précédent"
+      class="cursor-pointer hidden sm:flex absolute -left-3 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full text-gold hover:bg-gold/10 transition z-20"
+      data-prev
+    >
+      <img src="assets/icon/left.png" alt="" />
+    </button>
 
-                <!-- bouton suivant -->
-                <button
-                  type="button"
-                  aria-label="Suivant"
-                  class="hidden cursor-pointer sm:flex absolute -right-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full text-gold hover:bg-gold/10 transition z-20"
-                  data-next
-                >
-                  <img src="assets/icon/right.png" alt="" />
-                </button>
+    <!-- bouton suivant -->
+    <button
+      type="button"
+      aria-label="Suivant"
+      class="cursor-pointer hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full text-gold hover:bg-gold/10 transition z-20"
+      data-next
+    >
+      <img src="assets/icon/right.png" alt="" />
+    </button>
 
                 <!-- Lignée 1 -->
                 <div
-                  class="grid grid-cols-4 px-6 md:grid-cols-4 gap-6 absolute inset-0 opacity-100 transition-opacity duration-500 ease-in-out place-items-center"
+                  class="grid grid-cols-2 px-6 md:grid-cols-4 gap-6 absolute inset-0 opacity-100 transition-opacity duration-500 ease-in-out place-items-center"
                   data-slide
                 >
                   <!-- Alopécie -->
@@ -369,7 +372,7 @@
 
                 <!-- Lignée 2 -->
                 <div
-                  class="grid grid-cols-4 md:grid-cols-4 px-6 gap-6 absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out place-items-center"
+                  class="grid grid-cols-2 md:grid-cols-4 px-6 gap-6 absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out place-items-center"
                   data-slide
                 >
                   <!-- Peau sèche / grasse -->
@@ -436,8 +439,10 @@
                     </figcaption>
                   </figure>
                 </div>
+               
               </div>
               <!-- fin data-wrap -->
+                <div class="mt-3 sm:hidden flex items-center justify-center gap-2" data-dots></div>
             </div>
             <!-- fin data-ozono -->
 
@@ -475,98 +480,225 @@
           </style>
 
           <script>
-            (() => {
-              const root = document.querySelector("[data-ozono]");
-              if (!root) return;
+  (() => {
+    const root = document.querySelector("[data-ozono]");
+    if (!root) return;
 
-              const wrap = root.querySelector("[data-wrap]");
-              const slides = Array.from(root.querySelectorAll("[data-slide]"));
-              const prev = root.querySelector("[data-prev]");
-              const next = root.querySelector("[data-next]");
-              const reduce = window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-              ).matches;
+    const wrap   = root.querySelector("[data-wrap]");
+    const slides = Array.from(root.querySelectorAll("[data-slide]"));
+    const prev   = root.querySelector("[data-prev]");
+    const next   = root.querySelector("[data-next]");
+    const dotsEl = root.querySelector("[data-dots]");
 
-              // Attend le chargement des images d'un slide
-              const imgsLoaded = (el) => {
-                const imgs = Array.from(el.querySelectorAll("img"));
-                if (!imgs.length) return Promise.resolve();
-                return Promise.all(
-                  imgs.map((img) =>
-                    img.complete
-                      ? Promise.resolve()
-                      : new Promise((res) => {
-                          img.addEventListener("load", res, { once: true });
-                          img.addEventListener("error", res, { once: true });
-                        })
-                  )
-                );
-              };
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const mqMobile = window.matchMedia("(max-width: 639px)"); // Tailwind 'sm' breakpoint
 
-              let i = 0;
-              let maxH = 0;
+    // Attend le chargement des images d'un slide
+    const imgsLoaded = (el) => {
+      const imgs = Array.from(el.querySelectorAll("img"));
+      if (!imgs.length) return Promise.resolve();
+      return Promise.all(
+        imgs.map((img) =>
+          img.complete
+            ? Promise.resolve()
+            : new Promise((res) => {
+                img.addEventListener("load", res, { once: true });
+                img.addEventListener("error", res, { once: true });
+              })
+        )
+      );
+    };
 
-              const setHeight = (h, animate = true) => {
-                if (reduce) animate = false;
-                if (!animate) {
-                  wrap.style.transition = "none";
-                  wrap.style.height = h + "px";
-                  return;
-                }
-                wrap.style.transition =
-                  "height .36s cubic-bezier(.22,.61,.36,1)";
-                wrap.style.height = h + "px";
-              };
+    let i = 0;
+    let maxH = 0;
 
-              const measureAll = async () => {
-                // On s'assure d'avoir les vraies hauteurs (images chargées)
-                await Promise.all(slides.map((s) => imgsLoaded(s)));
-                maxH = Math.max(...slides.map((s) => s.offsetHeight));
-                setHeight(maxH, false);
-              };
+    const setHeight = (h, animate = true) => {
+      if (reduce) animate = false;
+      if (!animate) {
+        wrap.style.transition = "none";
+        wrap.style.height = h + "px";
+        return;
+      }
+      wrap.style.transition = "height .36s cubic-bezier(.22,.61,.36,1)";
+      wrap.style.height = h + "px";
+    };
 
-              const init = async () => {
-                // État initial : première slide visible
-                slides.forEach((s, k) => {
-                  s.style.opacity = k === 0 ? "1" : "0";
-                  s.style.pointerEvents = k === 0 ? "auto" : "none";
-                  s.style.zIndex = k === 0 ? "1" : "0";
-                });
-                await measureAll();
-              };
+    const measureAll = async () => {
+      await Promise.all(slides.map((s) => imgsLoaded(s)));
+      // On mesure la hauteur réelle de chaque slide (elles sont en position absolue)
+      const heights = slides.map((s) => {
+        // force display pour mesurer hors visibilité
+        const prevOpacity = s.style.opacity;
+        const prevPointer = s.style.pointerEvents;
+        const prevZ = s.style.zIndex;
+        s.style.opacity = "1";
+        s.style.pointerEvents = "auto";
+        s.style.zIndex = "1";
+        const h = s.offsetHeight;
+        s.style.opacity = prevOpacity || (s === slides[0] ? "1" : "0");
+        s.style.pointerEvents = prevPointer || (s === slides[0] ? "auto" : "none");
+        s.style.zIndex = prevZ || (s === slides[0] ? "1" : "0");
+        return h;
+      });
+      maxH = Math.max(...heights);
+      setHeight(maxH, false);
+    };
 
-              const show = async (idx, animate = true) => {
-                i = (idx + slides.length) % slides.length;
-                // pas de recalcul slide par slide : on garde la hauteur max pour éviter tout "saut"
-                setHeight(maxH, animate);
-                slides.forEach((s, k) => {
-                  const on = k === i;
-                  s.style.opacity = on ? "1" : "0";
-                  s.style.pointerEvents = on ? "auto" : "none";
-                  s.style.zIndex = on ? "1" : "0";
-                });
-              };
+    const show = (idx, animate = true) => {
+      i = (idx + slides.length) % slides.length;
+      setHeight(maxH, animate);
+      slides.forEach((s, k) => {
+        const on = k === i;
+        s.style.opacity = on ? "1" : "0";
+        s.style.pointerEvents = on ? "auto" : "none";
+        s.style.zIndex = on ? "1" : "0";
+      });
+      syncDots();
+    };
 
-              // Events
-              prev?.addEventListener("click", () => show(i - 1));
-              next?.addEventListener("click", () => show(i + 1));
-              window.addEventListener("resize", async () => {
-                await measureAll(); // recalc hauteur max au resize
-                show(i, false);
-              });
+    // ---------- Dots (mobile) ----------
+    const buildDots = () => {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = "";
+      slides.forEach((_, k) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", `Aller à la lignée ${k + 1}`);
+        b.className = "w-2.5 h-2.5 rounded-full text-gold opacity-40";
+        b.addEventListener("click", () => {
+          pauseTemporarily();
+          show(k);
+        });
+        dotsEl.appendChild(b);
+      });
+      syncDots();
+    };
 
-              // Lancement
-              if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", init, {
-                  once: true,
-                });
-              } else {
-                init();
-              }
-            })();
-          </script>
+    const syncDots = () => {
+      if (!dotsEl) return;
+      Array.from(dotsEl.children).forEach((b, idx) => {
+        b.style.opacity = idx === i ? "1" : "0.4";
+      });
+    };
 
-          <div class="rounded-r-[28px] overflow-hidden">
+    // ---------- Auto-play (mobile seulement) ----------
+    const intervalMs = Number(root.dataset.interval) || 5500;
+    let autoId = null;
+    const isMobile = () => mqMobile.matches;
+
+    const startAutoplay = () => {
+      if (reduce || !isMobile()) return;
+      if (autoId) return;
+      autoId = setInterval(() => show(i + 1), intervalMs);
+    };
+
+    const stopAutoplay = () => {
+      if (autoId) {
+        clearInterval(autoId);
+        autoId = null;
+      }
+    };
+
+    const pauseTemporarily = (ms = 7000) => {
+      stopAutoplay();
+      if (reduce || !isMobile()) return;
+      // Redémarre après une courte pause si on est toujours en mobile
+      setTimeout(() => isMobile() && startAutoplay(), ms);
+    };
+
+    // Pause si l’onglet/section n’est pas visible
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) startAutoplay();
+            else stopAutoplay();
+          });
+        },
+        { threshold: 0.3 }
+      );
+      io.observe(root);
+    }
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAutoplay();
+      else startAutoplay();
+    });
+    mqMobile.addEventListener("change", () => {
+      // bascule mobile ↔ desktop
+      if (isMobile()) startAutoplay();
+      else stopAutoplay();
+    });
+
+    // ---------- Swipe (touch) ----------
+    const addSwipe = () => {
+      let sx = 0, sy = 0, dx = 0, dy = 0, swiping = false;
+      const THRESH = 40;
+      const onStart = (e) => {
+        const t = e.touches ? e.touches[0] : e;
+        sx = t.clientX; sy = t.clientY; dx = 0; dy = 0; swiping = true;
+      };
+      const onMove = (e) => {
+        if (!swiping) return;
+        const t = e.touches ? e.touches[0] : e;
+        dx = t.clientX - sx;
+        dy = t.clientY - sy;
+        // Si mouvement horizontal dominant, on empêche le scroll pour un swipe fluide
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+          e.preventDefault();
+        }
+      };
+      const onEnd = () => {
+        if (!swiping) return;
+        swiping = false;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > THRESH) {
+          pauseTemporarily();
+          show(i + (dx < 0 ? 1 : -1));
+        }
+      };
+      wrap.addEventListener("touchstart", onStart, { passive: true });
+      wrap.addEventListener("touchmove", onMove, { passive: false });
+      wrap.addEventListener("touchend", onEnd);
+    };
+
+    // ---------- Init ----------
+    const init = async () => {
+      slides.forEach((s, k) => {
+        s.style.opacity = k === 0 ? "1" : "0";
+        s.style.pointerEvents = k === 0 ? "auto" : "none";
+        s.style.zIndex = k === 0 ? "1" : "0";
+      });
+
+      await measureAll();
+      buildDots();
+      addSwipe();
+
+      prev?.addEventListener("click", () => {
+        pauseTemporarily();
+        show(i - 1);
+      });
+      next?.addEventListener("click", () => {
+        pauseTemporarily();
+        show(i + 1);
+      });
+
+      window.addEventListener("resize", async () => {
+        await measureAll();
+        show(i, false);
+      });
+
+      // Démarre si on est en mobile et que l’élément est visible
+      startAutoplay();
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init, { once: true });
+    } else {
+      init();
+    }
+  })();
+</script>
+
+          <div class="rounded-b-[28px] overflow-hidden lg:rounded-tr-[28px] lg:rounded-bl-none">
             <img
               src="assets/ozono.jpeg"
               class="w-full h-full object-cover"
@@ -1085,7 +1217,7 @@ function prepInitialLayout() {
           class="mt-10 h-64 flex flex-col justify-center items-center transition-all duration-300 ease-out opacity-0 translate-x-0"
         >
           <h4 id="t-name" class="text-3xl titlefont text-gold"></h4>
-          <p id="t-text" class="mt-4 text-gold max-w-2xl mx-auto sm:px-16"></p>
+          <p id="t-text" class="mt-4 text-gold max-w-2xl mx-auto px-10 "></p>
         </div>
       </div>
     </section>
@@ -1188,7 +1320,10 @@ function prepInitialLayout() {
       <div
         class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid lg:grid-cols-3 gap-8 items-start"
       >
+      <div class="w-full flex justify-center">
         <img src="assets/logo_2.png" class="h-64" alt="Logo de patapouf" />
+      </div>
+        
 
         <div>
           <h5 class="titlefont text-xl">Adresse</h5>
@@ -1207,7 +1342,7 @@ function prepInitialLayout() {
           </div>
         </div>
 
-        <div>
+        <div >
           <h5 class="titlefont text-xl">Contact</h5>
           <p class="mt-2">patapouf.toilettage@gmail.com</p>
           <a
@@ -1220,7 +1355,8 @@ function prepInitialLayout() {
                 alt="icone telephone" /></span
             >06 71 04 51 95</a
           >
-          <div class="mt-4 flex items-center gap-4 text-xl">
+          <div class="titlefont text-s mt-4">Mes reseaux</div>
+          <div class="mt-2 flex items-center gap-4 text-xl">
             <a href="https://www.instagram.com/patapouf.06/"
               ><img class="h-8" src="assets/icon/instagram.png" alt=""
             /></a>
