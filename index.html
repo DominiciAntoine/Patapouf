@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PATAPOUF – Toilettage & Spa</title>
+    <meta
+      name="description"
+      content="Patapouf – Toilettage & Spa à Mouans‑Sartoux. Prestations, tarifs, galerie et contact."
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#2563eb", // bg-primary, text-primary...
+                foreground: "#ffffff", // text-primary-foreground
+              },
+              secondary: {
+                DEFAULT: "#f59e0b",
+                foreground: "#1f2937",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .bg-gold {
+        background-color: #b8942f;
+      }
+      .text-gold {
+        color: #b8942f;
+      }
+      .border-gold {
+        border-color: #b8942f;
+      }
+      .bg-blush {
+        background-color: #f7c8d3;
+      }
+      .text-blush {
+        color: #f3a9b8;
+      }
+      .bg-marble {
+        background-image: url("assets/marble.jpeg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      @font-face {
+        font-family: Mont; /* set name */
+        src: url(assets/fonts/mont/fonnts.com-Mont_Blanc_ExtraLight.ttf); /* url of the font */
+      }
+      .mont {
+        font-family: Mont;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-stone-800 antialiased">
+    <!-- HEADER (strictement comme la maquette: 2 onglets + téléphone) -->
+    <header
+      class="bg-white/95 backdrop-blur border-b border-[#f3b7c2] sticky top-0 z-50"
+    >
+      <div
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-40 flex items-center justify-between"
+      >
+        <a href="#home" class="flex items-center gap-3">
+          <img src="assets/Logo_H.png" class="h-32" alt="" />
+        </a>
+
+        <nav
+          class="hidden md:flex items-center gap-8 text-[#f3a9b8] font-medium mont"
+        >
+          <a href="#salon" class="hover:opacity-80">Le salon</a>
+          <a href="#prestations" class="hover:opacity-80">Nos prestations</a>
+          <a
+            href="tel:+33671045195"
+            class="inline-flex items-center gap-2 rounded-full border border-[#f3b7c2] px-4 py-2 text-[#f3a9b8] text-sm"
+          >
+            <span class="inline-block"
+              ><img
+                src="assets/icone_tel.png"
+                class="h-6"
+                alt="Icone telephone"
+            /></span>
+            <span>06 71 04 51 95</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 relative z-10">
+        <div class="relative rounded-3xl overflow-hidden">
+          <video
+            class="w-full h-[46vh] md:h-[62vh] object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="https://placehold.co/1600x900?text=Fa%C3%A7ade+du+salon"
+          >
+            <source src="/assets/pres.webm" type="video/webm" />
+            Votre navigateur ne supporte pas la vidéo HTML5.
+          </video>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gold"></div>
+    </section>
+
+    <!-- SECTION: photo + texte or -->
+    <section class="bg-gold">
+      <div
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid lg:grid-cols-[1fr_1.2fr] gap-6 items-center"
+      >
+        <div class="rounded-3xl overflow-hidden bg-white/10">
+          <img
+            src="assets/IMG_5555.jpg"
+            class="w-full h-full object-cover"
+            alt="Laura et un chien"
+          />
+        </div>
+        <article class="text-white">
+          <h2 class="text-2xl md:text-3xl font-extrabold">
+            Une passion devenue un métier
+          </h2>
+          <div class="mt-3 space-y-3 leading-relaxed">
+            <p>
+              Je m'appelle Laura, toiletteuse diplômée depuis novembre 2024,
+              avec une spécialisation en spa et ozonothérapie. J'ai été formée
+              au centre canin Azur Toilettage à Vallauris, puis j'ai exercé à
+              domicile pour gagner en expérience avant d'ouvrir, en février
+              2025, mon propre salon : Patapouf.
+            </p>
+            <p>
+              Depuis toujours, les animaux font partie de ma vie. Les chiens, en
+              particulier, m'ont toujours touchée par leur sincérité et leur
+              amour inconditionnel. Avec eux, il n'y a ni jugement, ni
+              méchanceté : seulement une belle complicité.
+            </p>
+            <p>
+              Ce métier est pour moi l'équilibre parfait entre ma passion des
+              animaux, le travail manuel et la précision qu'exige l'art du
+              toilettage.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: Le salon Patapouf (3 cartes) -->
+    <section id="salon" class="bg-white">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <h3 class="text-3xl font-extrabold text-gold">Le salon Patapouf</h3>
+        <p class="mt-2 text-[#b8942f] max-w-2xl">
+          Mon salon de 60 m², situé à Mouans‑Sartoux (23 chemin des Plaines,
+          06370), est pensé avant tout pour le bien‑être des animaux et le
+          confort des propriétaires.
+        </p>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-6">
+
+          <!-- Card 1 -->
+          <article class="rounded-3xl overflow-hidden bg-white">
+            <img
+              src="assets/patio.jpeg"
+              class="w-full h-64 object-cover"
+              alt="Le patio"
+            />
+            <div
+              class="border-[#f3b7c2] border-3 border-x-3 border-b-3 rounded-b-3xl bg-white border-t-0"
+            >
+              <div class="p-6 h-46 text-center">
+                <h4 class="text-xl font-extrabold text-gold">Le patio</h4>
+                <p class="mt-2 text-gold text-m" data-placeholder>
+                  Dès leur arrivée, les chiens sont accueillis en liberté dans
+                  un espace sécurisé, afin qu’ils se sentent rapidement en
+                  confiance.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="rounded-3xl overflow-hidden bg-white"
+          >
+            <img
+              src="assets/detente.jpeg"
+              class="w-full h-64 object-cover"
+              alt="Le coin détente"
+            />
+            <div
+              class="border-[#f3b7c2] border-3 border-x-3 border-b-3 rounded-b-3xl bg-white border-t-0"
+            >
+            <div class="p-6 h-46 text-center">
+              <h4 class="text-xl font-extrabold text-gold">Le coin détente</h4>
+              <p class="mt-2 text-gold text-m" data-placeholder>
+                Côté client, un coin détente est à disposition avec café et thé,
+                pour patienter confortablement et même assister au toilettage si
+                vous le souhaitez..
+              </p>
+            </div>
+            </div>
+          </article>
+          <!-- Card 3 -->
+          <article
+            class="rounded-3xl overflow-hidden bg-white"
+          >
+            <img
+              src="assets/reception.jpeg"
+              class="w-full h-64 object-cover"
+              alt="Le coin détente"
+            />
+            <div
+              class="border-[#f3b7c2] border-3 border-x-3 border-b-3 rounded-b-3xl bg-white border-t-0"
+            >
+            <div class="p-6 h-46 text-center">
+              <h4 class="text-xl font-extrabold text-gold">L’accessibilité</h4>
+              <p class="mt-2 text-gold text-m" data-placeholder>
+                Des places de parking sont disponibles juste devant le salon
+                pour plus de praticité.
+              </p>
+            </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Approche unique (fond marbre, bloc + photo) -->
+    <section class="bg-marble">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid lg:grid-cols-[1.2fr_.9fr] items-stretch">
+          <!-- Bloc texte blanc bord rose -->
+          <article
+            class="bg-white/95 rounded-l-[28px] border-3 border-[#f3b7c2] border-r-0 p-6 md:p-8"
+          >
+            <h3 class="text-center text-2xl font-extrabold text-gold">
+              Une approche unique
+            </h3>
+            <p class="mt-4 text-center">
+              Ce qui différencie Patapouf, c'est son approche
+              <b>spa spécialisée en ozonothérapie</b>.<br />
+              Cette technique permet de soulager et d'améliorer de nombreuses
+              problématiques :
+            </p>
+
+            <!-- slider à 2 “lignées” -->
+            <div class="relative mt-6" data-ozono>
+              <div
+                class="relative px-12 min-h-[240px] md:min-h-[280px] lg:min-h-[320px]"
+                data-wrap
+              >
+                <!-- bouton précédent -->
+                <button
+                  type="button"
+                  aria-label="Précédent"
+                  class="hidden cursor-pointer sm:flex absolute -left-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full border border-gold/40 text-gold hover:bg-gold/10 transition z-20"
+                  data-prev
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m15 19-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+
+                <!-- bouton suivant -->
+                <button
+                  type="button"
+                  aria-label="Suivant"
+                  class="hidden cursor-pointer sm:flex absolute -right-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full border border-gold/40 text-gold hover:bg-gold/10 transition z-20"
+                  data-next
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m9 5 7 7-7 7"
+                    />
+                  </svg>
+                </button>
+
+                <!-- Lignée 1 -->
+                <div
+                  class="grid grid-cols-2 px-6 md:grid-cols-4 gap-6 absolute inset-0 opacity-100 transition-opacity duration-500 ease-in-out place-items-center"
+                  data-slide
+                >
+                  <!-- Alopécie -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/Icone_allo.png"
+                        alt="Ozonothérapie – Alopécie"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Alopécie
+                    </figcaption>
+                  </figure>
+
+                  <!-- Dermatites -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/icone_champi.png"
+                        alt="Ozonothérapie – Dermatites"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Dermatites
+                    </figcaption>
+                  </figure>
+
+                  <!-- Leishmaniose -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/Icone_moustique.png"
+                        alt="Ozonothérapie – Leishmaniose"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Leishmaniose
+                    </figcaption>
+                  </figure>
+
+                  <!-- Allergies -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/icone_allergie.png"
+                        alt="Ozonothérapie – Allergies"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Allergies
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <!-- Lignée 2 -->
+                <div
+                  class="grid grid-cols-2 md:grid-cols-4 px-6 gap-6 absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out place-items-center"
+                  data-slide
+                >
+                  <!-- Peau sèche / grasse -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/icone_peau.png"
+                        alt="Ozonothérapie – Peau sèche ou grasse"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Peau sèche ou grasse
+                    </figcaption>
+                  </figure>
+
+                  <!-- Plaies / démangeaisons -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/icone_plaie.png"
+                        alt="Ozonothérapie – Plaies ou démangeaisons"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Plaies ou démangeaisons
+                    </figcaption>
+                  </figure>
+
+                  <!-- Stress -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/icone_stresse.png"
+                        alt="Ozonothérapie – Stress"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Stress
+                    </figcaption>
+                  </figure>
+
+                  <!-- Bien-être -->
+                  <figure class="text-center w-full max-w-[160px] mx-auto">
+                    <div
+                      class="aspect-[4/3] overflow-hidden rounded-xl p-3 md:p-4"
+                    >
+                      <img
+                        src="assets/icone_bien_etre.png"
+                        alt="Ozonothérapie – Bien-être"
+                        class="w-full h-full object-contain"
+                      />
+                    </div>
+                    <figcaption class="mt-2 text-gold font-semibold caption-2l">
+                      Bien-être
+                    </figcaption>
+                  </figure>
+                </div>
+              </div>
+              <!-- fin data-wrap -->
+            </div>
+            <!-- fin data-ozono -->
+
+            <!-- libellés sous forme de texte simple (optionnel) -->
+            <div class="sr-only">
+              Lignée 1 : Alopécie, Dermatites, Leishmaniose, Allergies. Lignée 2
+              : Peau sèche ou grasse, Plaies ou démangeaisons, Stress,
+              Bien-être.
+            </div>
+
+            <p class="mt-6">
+              Pour garantir la meilleure qualité, j'utilise les
+              <b>produits haut de gamme Iv San Bernard</b>, disponibles via mon
+              partenaire <b>GroomAttitude</b>.
+            </p>
+            <p class="mt-3">
+              Chez Patapouf, chaque animal est accueilli
+              <b>avec douceur et professionnalisme</b>, dans une ambiance
+              sereine où le respect et l'amour des animaux sont au cœur de
+              chaque soin.
+            </p>
+          </article>
+
+          <!-- Styles minimes pour clamp à 2 lignes -->
+          <style>
+            /* 2 lignes max pour stabiliser la hauteur des slides */
+            .caption-2l {
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              min-height: 2.6em; /* ~2 lignes */
+              line-height: 1.3;
+            }
+          </style>
+
+          <script>
+            (() => {
+              const root = document.querySelector("[data-ozono]");
+              if (!root) return;
+
+              const wrap = root.querySelector("[data-wrap]");
+              const slides = Array.from(root.querySelectorAll("[data-slide]"));
+              const prev = root.querySelector("[data-prev]");
+              const next = root.querySelector("[data-next]");
+              const reduce = window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+              ).matches;
+
+              // Attend le chargement des images d'un slide
+              const imgsLoaded = (el) => {
+                const imgs = Array.from(el.querySelectorAll("img"));
+                if (!imgs.length) return Promise.resolve();
+                return Promise.all(
+                  imgs.map((img) =>
+                    img.complete
+                      ? Promise.resolve()
+                      : new Promise((res) => {
+                          img.addEventListener("load", res, { once: true });
+                          img.addEventListener("error", res, { once: true });
+                        })
+                  )
+                );
+              };
+
+              let i = 0;
+              let maxH = 0;
+
+              const setHeight = (h, animate = true) => {
+                if (reduce) animate = false;
+                if (!animate) {
+                  wrap.style.transition = "none";
+                  wrap.style.height = h + "px";
+                  return;
+                }
+                wrap.style.transition =
+                  "height .36s cubic-bezier(.22,.61,.36,1)";
+                wrap.style.height = h + "px";
+              };
+
+              const measureAll = async () => {
+                // On s'assure d'avoir les vraies hauteurs (images chargées)
+                await Promise.all(slides.map((s) => imgsLoaded(s)));
+                maxH = Math.max(...slides.map((s) => s.offsetHeight));
+                setHeight(maxH, false);
+              };
+
+              const init = async () => {
+                // État initial : première slide visible
+                slides.forEach((s, k) => {
+                  s.style.opacity = k === 0 ? "1" : "0";
+                  s.style.pointerEvents = k === 0 ? "auto" : "none";
+                  s.style.zIndex = k === 0 ? "1" : "0";
+                });
+                await measureAll();
+              };
+
+              const show = async (idx, animate = true) => {
+                i = (idx + slides.length) % slides.length;
+                // pas de recalcul slide par slide : on garde la hauteur max pour éviter tout "saut"
+                setHeight(maxH, animate);
+                slides.forEach((s, k) => {
+                  const on = k === i;
+                  s.style.opacity = on ? "1" : "0";
+                  s.style.pointerEvents = on ? "auto" : "none";
+                  s.style.zIndex = on ? "1" : "0";
+                });
+              };
+
+              // Events
+              prev?.addEventListener("click", () => show(i - 1));
+              next?.addEventListener("click", () => show(i + 1));
+              window.addEventListener("resize", async () => {
+                await measureAll(); // recalc hauteur max au resize
+                show(i, false);
+              });
+
+              // Lancement
+              if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", init, {
+                  once: true,
+                });
+              } else {
+                init();
+              }
+            })();
+          </script>
+
+          <div class="rounded-r-[28px] overflow-hidden">
+            <img
+              src="assets/ozono.jpeg"
+              class="w-full h-full object-cover"
+              alt="Spa / Ozonothérapie"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANDE ROSE: Nos prestations & tarifs -->
+    <!-- BANDE ROSE -->
+    <section class="bg-[#f4acba]">
+      <div
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-center text-white"
+      >
+        <h3 class="text-3xl font-extrabold">Nos prestations & tarifs</h3>
+        <p class="max-w-3xl mx-auto mt-2">
+          Tous nos soins sont réalisés avec des produits haut de gamme Iv San
+          Bernard, pour le confort et le bien-être de vos compagnons.
+        </p>
+        <p class="max-w-3xl mx-auto mt-2 opacity-90">
+          À noter les tarifs affichés peuvent variés en fonction de l'état du
+          chien, de la pénibilité durant le toilettage ainsi que la taille du
+          chien.
+        </p>
+        <div class="mt-4 inline-flex items-center gap-4">
+          <button
+            id="btnDogs"
+            class="text-white px-5 py-1.5 text-m font-semibold underline underline-offset-4"
+            type="button"
+          >
+            Tarif chien
+          </button>
+          <span class="opacity-60">|</span>
+          <button
+            id="btnCats"
+            class="text-white/80 hover:text-white px-5 py-1.5 text-m"
+            type="button"
+          >
+            Tarif chat
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENU TARIFS piloté par JSON -->
+    <section id="prestations" class="bg-[#f5efe6]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <!-- 2 vues superposées (on n’en montre qu’une à la fois) -->
+        <div class="relative">
+          <!-- Chiens -->
+          <div
+            id="dogsView"
+            class="grid md:grid-cols-3 gap-6 transition-opacity duration-300 opacity-100"
+          ></div>
+
+          <!-- Chats -->
+          <div
+            id="catsView"
+            class="transition-opacity duration-300 opacity-0 hidden max-w-2xl mx-auto"
+          ></div>
+        </div>
+
+        <div class="text-center mt-8">
+          <button
+            id="downloadPdfBtn"
+            type="button"
+            class="rounded-full border border-[#f3b7c2] text-[#f090a5] px-5 py-1.5 text-sm bg-white"
+          >
+            Voir les autres races
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // --- PDF download ---
+      const PDF_URL = "assets/prestation_et_tarif.pdf";
+      const FILE_NAME = "prestation_et_tarif.pdf";
+      document
+        .getElementById("downloadPdfBtn")
+        .addEventListener("click", () => {
+          const a = document.createElement("a");
+          a.href = PDF_URL;
+          a.download = FILE_NAME;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+        });
+
+      // --- Data-driven render ---
+      const PRICE_JSON = "assets/prices.json";
+      const $dogs = document.getElementById("dogsView");
+      const $cats = document.getElementById("catsView");
+      const $btnDogs = document.getElementById("btnDogs");
+      const $btnCats = document.getElementById("btnCats");
+
+      const formatPrice = (p) => (p == null ? "—" : `${p}€`);
+
+      function serviceListHTML(services) {
+        const labels = services.map((s) => `<li>${s.label}</li>`).join("");
+        const prices = services
+          .map((s) => `<li>${formatPrice(s.price)}</li>`)
+          .join("");
+        return `
+      <div class="mt-4 flex justify-center">
+        <div class="grid grid-cols-[auto_auto] items-start">
+          <ul class="space-y-2 text-[#b8942f] font-semibold text-base text-left pr-10">
+            ${labels}
+          </ul>
+          <ul class="space-y-2 text-left pl-3 border-l border-[#b8942f]/60 text-[#b8942f] font-semibold text-base">
+            ${prices}
+          </ul>
+        </div>
+      </div>
+    `;
+      }
+
+      const dogCard = (b) => `
+    <article class="rounded-3xl bg-white px-6 py-5 shadow-sm border border-stone-200">
+      <h4 class="text-[#b8942f] text-2xl font-extrabold text-center">${
+        b.breed
+      }</h4>
+      ${serviceListHTML(b.services)}
+    </article>
+  `;
+
+      const catCard = (c) => `
+    <article class="rounded-3xl bg-white px-6 py-5 shadow-sm border border-stone-200 text-center">
+      <h4 class="text-[#b8942f] text-xl font-extrabold mb-2">${c.breed}</h4>
+      ${serviceListHTML(c.services)}
+    </article>
+  `;
+
+      let currentView = "dogs";
+
+      function setActiveTab(which) {
+        const activeDog = which === "dogs";
+        $btnDogs.classList.toggle("underline", activeDog);
+        $btnDogs.classList.toggle("font-semibold", activeDog);
+        $btnDogs.classList.toggle("text-white/80", !activeDog);
+        $btnCats.classList.toggle("underline", !activeDog);
+        $btnCats.classList.toggle("font-semibold", !activeDog);
+        $btnCats.classList.toggle("text-white/80", activeDog);
+      }
+
+      const FADE_MS = 300; // doit matcher duration-300
+
+      let isAnimating = false;
+      function fadeSwitch(to) {
+        if (to === currentView || isAnimating) return;
+        isAnimating = true;
+
+        const hideEl = currentView === "dogs" ? $dogs : $cats;
+        const showEl = to === "dogs" ? $dogs : $cats;
+
+        // fade out current
+        hideEl.classList.add("opacity-0");
+        setTimeout(() => {
+          hideEl.classList.add("hidden");
+          hideEl.classList.remove("opacity-0"); // reset pour la prochaine fois
+        }, FADE_MS);
+
+        // fade in next
+        showEl.classList.remove("hidden");
+        showEl.classList.add("opacity-0"); // point de départ transparent
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            showEl.classList.remove("opacity-0"); // vers opaque
+          });
+        });
+
+        currentView = to;
+        setActiveTab(to);
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, FADE_MS);
+      }
+
+      // Load JSON, render both views (chiens visibles par défaut)
+      fetch(PRICE_JSON)
+        .then((r) => r.json())
+        .then((data) => {
+          $dogs.classList.add("transition-opacity", "duration-300");
+          $cats.classList.add("transition-opacity", "duration-300");
+
+          // état initial : chiens visibles, chats cachés
+          $dogs.classList.remove("hidden", "opacity-0");
+          $cats.classList.add("hidden", "opacity-0");
+          $dogs.innerHTML = data.dogs.map(dogCard).join("");
+          $cats.innerHTML = data.cats
+            .map(catCard)
+            .join('<div class="h-6"></div>');
+
+          // Tabs behavior
+          $btnDogs.addEventListener("click", () => fadeSwitch("dogs"));
+          $btnCats.addEventListener("click", () => fadeSwitch("cats"));
+
+          setActiveTab("dogs"); // état initial
+        })
+        .catch((err) => console.error("Erreur chargement tarifs:", err));
+    </script>
+
+    <!-- GALERIE 3 vignettes -->
+    <section class="bg-white" data-gallery>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <!-- Titre + flèches -->
+        <div class="flex items-center justify-between gap-4">
+          <h3 class="text-3xl font-extrabold text-gold">
+            Des chiens et chats tout propres...
+          </h3>
+          <div class="flex items-center gap-3 text-gold">
+            <button
+              type="button"
+              aria-label="Précédent"
+              data-g-prev
+              class="flex items-center justify-center w-9 h-9 rounded-full border border-gold/40 hover:bg-gold/10 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m15 19-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Suivant"
+              data-g-next
+              class="flex items-center justify-center w-9 h-9 rounded-full border border-gold/40 hover:bg-gold/10 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m9 5 7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Viewport -->
+        <div class="relative mt-6 overflow-hidden rounded-2xl" data-g-viewport>
+          <!-- Piste -->
+          <div
+            class="flex will-change-transform"
+            data-g-track
+            style="
+              transform: translateX(0%);
+              transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            "
+          >
+            <!-- Chaque section = flex item largeur 100% -->
+            <div class="basis-full shrink-0">
+              <div class="grid md:grid-cols-3 gap-6">
+                <img
+                  src="assets/results/image00029.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 1"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/results/image00005.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 2"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/results/image00008.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 3"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="basis-full shrink-0">
+              <div class="grid md:grid-cols-3 gap-6">
+                <img
+                  src="assets/results/image00015.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 4"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/results/image00030.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 5"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/results/image00001.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 6"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div class="basis-full shrink-0">
+              <div class="grid md:grid-cols-3 gap-6">
+                <img
+                  src="assets/results/image00034.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 7"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/results/image00013.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 8"
+                  loading="lazy"
+                />
+                <img
+                  src="assets/results/image00031.jpeg"
+                  class="w-full h-72 object-cover rounded-3xl"
+                  alt="Galerie 9"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (() => {
+        // Supporte plusieurs galeries sur la page
+        const galleries = document.querySelectorAll("[data-gallery]");
+        if (!galleries.length) return;
+
+        const prefersReduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        galleries.forEach((root) => {
+          const track = root.querySelector("[data-g-track]");
+          const viewport = root.querySelector("[data-g-viewport]");
+          const prev = root.querySelector("[data-g-prev]");
+          const next = root.querySelector("[data-g-next]");
+          const slides = Array.from(track.children);
+          let i = 0;
+
+          // Sécurité : largeur de chaque slide = largeur du viewport
+          const setSizes = () => {
+            const w = viewport.clientWidth;
+            slides.forEach((s) => {
+              s.style.width = w + "px";
+            });
+            // force la position courante après resize
+            track.style.transform = `translateX(-${i * 100}%)`;
+          };
+
+          const go = (idx) => {
+            i = (idx + slides.length) % slides.length;
+
+            // transition inline (indépendante de Tailwind)
+            track.style.transition =
+              "transform .5s cubic-bezier(.22,.61,.36,1)";
+
+            // utilisation de translate3d pour une anim plus fiable
+            track.style.transform = `translate3d(-${i * 100}%, 0, 0)`;
+          };
+
+          prev?.addEventListener("click", () => go(i - 1));
+          next?.addEventListener("click", () => go(i + 1));
+          window.addEventListener("resize", setSizes);
+
+          // Init quand le DOM est prêt et que les styles sont appliqués
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", setSizes, {
+              once: true,
+            });
+          } else {
+            setSizes();
+          }
+        });
+      })();
+    </script>
+
+    <!-- TÉMOIGNAGES (fond marbre) -->
+    <section class="bg-marble">
+      <div
+        class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 text-center"
+      >
+        <h3 class="text-3xl font-extrabold text-gold pt-16">Les témoignages</h3>
+
+        <!-- Flèche gauche (collée au bord) -->
+        <button
+          id="prevBtn"
+          class="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center size-10 rounded-full"
+          aria-label="Témoignage précédent"
+        >
+          <img src="assets/icon/left.png" alt="" />
+        </button>
+
+        <!-- Flèche droite (collée au bord) -->
+        <button
+          id="nextBtn"
+          class="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center size-10 rounded-full"
+          aria-label="Témoignage suivant"
+        >
+          <img src="assets/icon/right.png" alt="" />
+        </button>
+
+        <!-- Slide -->
+        <div
+          id="slide"
+          class="mt-10 h-64 flex flex-col justify-center items-center transition-all duration-300 ease-out opacity-0 translate-x-0"
+        >
+          <h4 id="t-name" class="text-2xl font-extrabold text-gold"></h4>
+          <p id="t-text" class="mt-4 text-gold max-w-2xl mx-auto"></p>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const testimonials = [
+        {
+          name: "Lena",
+          text: "Si vous cherchez un salon de toilettage foncez ! Je recommande à 100% patapouf pour prendre soin de votre boule de poils. La patronne et son associée sont toutes les deux des perles, d’une gentillesse et bienveillance absolue...",
+        },
+        {
+          name: "Alexandra",
+          text: "Première expérience chez un toiletteur pour notre Berger Australien, Tagada, et nous sommes plus que satisfaits ! L’équipe a été d’une grande douceur et très professionnelle. Tagada a tout de suite été mise en confiance, malgré que ce soit sa toute première fois. Le résultat est impeccable ! Le salon est propre, accueillant, et on sent un vrai amour des animaux. Un grand merci pour votre travail ! Nous reviendrons avec grand plaisir.",
+        },
+        {
+          name: "Kristine",
+          text: "Le salon est magnifique, et maintenant mon Rambo aussi ❤️🐶 !! Merci pour votre bienveillance à toutes les deux ce fut un reel plaisir de voir des passionés à l’oeuvre ! Rambo a tout de suite ete mis a l’aise et en confiance il est tombé sous le charme des dames qui se sont occupées de lui haha Merci encore 🙏💕",
+        },
+      ];
+
+      let i = 0;
+      const slideEl = document.getElementById("slide");
+      const nameEl = document.getElementById("t-name");
+      const textEl = document.getElementById("t-text");
+
+      function setContent() {
+        nameEl.textContent = testimonials[i].name;
+        textEl.textContent = testimonials[i].text;
+      }
+
+      // Anim directionnelle : NEXT = slide depuis la droite, PREV = depuis la gauche
+      function render(direction = null) {
+        if (!direction) {
+          // init
+          setContent();
+          // petit délai pour laisser le DOM peindre avant l'anim d'entrée
+          requestAnimationFrame(() => {
+            slideEl.classList.remove("opacity-0");
+            slideEl.classList.add("opacity-100");
+          });
+          return;
+        }
+
+        const outMove =
+          direction === "next" ? "-translate-x-6" : "translate-x-6";
+        const inMove =
+          direction === "next" ? "translate-x-6" : "-translate-x-6";
+
+        // phase 1 : sortie légère
+        slideEl.classList.remove(
+          "opacity-100",
+          "translate-x-0",
+          "-translate-x-6",
+          "translate-x-6"
+        );
+        slideEl.classList.add("opacity-0", outMove);
+
+        slideEl.addEventListener(
+          "transitionend",
+          function handler(e) {
+            if (e.target !== slideEl) return;
+            slideEl.removeEventListener("transitionend", handler);
+
+            // phase 2 : préparer l'entrée depuis le côté opposé
+            setContent();
+            slideEl.classList.remove(outMove);
+            slideEl.classList.add(inMove);
+
+            // forcer un reflow pour relancer la transition
+            void slideEl.offsetWidth;
+
+            // phase 3 : entrée
+            slideEl.classList.remove("opacity-0", inMove);
+            slideEl.classList.add("opacity-100", "translate-x-0");
+          },
+          { once: true }
+        );
+      }
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        i = (i - 1 + testimonials.length) % testimonials.length;
+        render("prev");
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        i = (i + 1) % testimonials.length;
+        render("next");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") document.getElementById("prevBtn").click();
+        if (e.key === "ArrowRight") document.getElementById("nextBtn").click();
+      });
+
+      render(); // init
+    </script>
+
+    <!-- FOOTER (or) -->
+    <footer class="bg-gold text-white">
+      <div
+        class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 grid lg:grid-cols-3 gap-8 items-start"
+      >
+        <img src="assets/logo_2.png" class="h-64" alt="Logo de patapouf" />
+
+        <div>
+          <h5 class="font-extrabold text-lg">Adresse</h5>
+          <p class="mt-2">23 chemin des Plaines, 06370 Mouans‑Sartoux</p>
+          <div
+            class="mt-3 w-full rounded-2xl overflow-hidden border border-white/30"
+          >
+            <iframe
+              class="w-full h-32 md:h-40"
+              src="https://www.google.com/maps?q=23+chemin+des+Plaines,+06370+Mouans-Sartoux&output=embed"
+              style="border: 0"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="font-extrabold text-lg">Contact</h5>
+          <p class="mt-2">patapouf.toilettage@gmail.com</p>
+          <a
+            href="tel:+33671045195"
+            class="mt-3 inline-flex items-center gap-2 rounded-full px-4 py-2 border border-white hover:bg-white/40"
+            ><span
+              ><img
+                src="assets/icone_tel_blanc.png"
+                class="h-6"
+                alt="icone telephone" /></span
+            >06 71 04 51 95</a
+          >
+          <div class="mt-4 flex items-center gap-4 text-xl">
+            <a href="https://www.instagram.com/patapouf.06/"
+              ><img class="h-8" src="assets/icon/instagram.png" alt=""
+            /></a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61560833784155&locale=fr_FR"
+              ><img class="h-8" src="assets/icon/facebook.png" alt=""
+            /></a>
+            <a href="https://www.tiktok.com/@patapouf.toilettage"
+              ><img class="h-8" src="assets/icon/tiktok.png" alt=""
+            /></a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-[#887027] py-3 text-m flex items-center justify-between px-4 sm:px-6 lg:px-8 h-24"
+      >
+        <a href="#" class="no-underline decoration-white/40 text-l"
+          >Mentions légales</a
+        >
+        <p class="opacity-90 text-l">Création par Panache Studio</p>
+      </div>
+    </footer>
+  </body>
+</html>

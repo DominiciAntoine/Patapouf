@@ -1,0 +1,133 @@
+{
+  "dogs": [
+    {
+      "breed": "Berger Australien",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 55 },
+        { "label": "Bain + Coupe", "price": 70 },
+        { "label": "Spa (sans coupe)", "price": 70 }
+      ]
+    },
+    {
+      "breed": "Bichon",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 35 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 50 }
+      ]
+    },
+    {
+      "breed": "Border Collie",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 55 },
+        { "label": "Bain + Coupe", "price": 70 },
+        { "label": "Spa (sans coupe)", "price": 70 }
+      ]
+    },
+    {
+      "breed": "Bouvier Bernois",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 75 },
+        { "label": "Bain + Coupe", "price": 90 },
+        { "label": "Spa (sans coupe)", "price": null }
+      ]
+    },
+    {
+      "breed": "Caniche",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 45 },
+        { "label": "Bain + Coupe", "price": 60 },
+        { "label": "Spa (sans coupe)", "price": 60 }
+      ]
+    },
+    {
+      "breed": "Cavalier King Charles",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 40 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 50 }
+      ]
+    },
+    {
+      "breed": "Chihuahua",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 30 },
+        { "label": "Bain + Coupe", "price": 40 },
+        { "label": "Spa (sans coupe)", "price": 40 }
+      ]
+    },
+    {
+      "breed": "Cocker",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 45 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 60 }
+      ]
+    },
+    {
+      "breed": "Golden Retriever",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 55 },
+        { "label": "Bain + Coupe", "price": 70 },
+        { "label": "Spa (sans coupe)", "price": 70 }
+      ]
+    },
+    {
+      "breed": "Husky",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 70 },
+        { "label": "Bain + Coupe", "price": null },
+        { "label": "Spa (sans coupe)", "price": null }
+      ]
+    },
+    {
+      "breed": "Lhassa Apso",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 35 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 50 }
+      ]
+    },
+    {
+      "breed": "Pomsky",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 45 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 60 }
+      ]
+    },
+    {
+      "breed": "Shih Tzu",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 35 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 50 }
+      ]
+    },
+    {
+      "breed": "Spitz",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 45 },
+        { "label": "Bain + Coupe", "price": 55 },
+        { "label": "Spa (sans coupe)", "price": 60 }
+      ]
+    },
+    {
+      "breed": "Yorkshire",
+      "services": [
+        { "label": "Bain + Démêlage", "price": 35 },
+        { "label": "Bain + Coupe", "price": 50 },
+        { "label": "Spa (sans coupe)", "price": 50 }
+      ]
+    }
+  ],
+  "cats": [
+    {
+      "breed": "Tous types de chat",
+      "services": [
+        { "label": "Brossage", "price": 40 },
+        { "label": "Bain + Brossage", "price": 50 }
+      ]
+    }
+  ]
+}
