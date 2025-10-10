@@ -9,7 +9,10 @@
       content="Patapouf – Toilettage & Spa à Mouans‑Sartoux. Prestations, tarifs, galerie et contact."
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
         theme: {
@@ -54,16 +57,36 @@
         background-position: center;
       }
 
+      .fade-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .fade-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
       @font-face {
         font-family: Mont; /* set name */
         src: url(assets/fonts/mont/fonnts.com-Mont_Blanc_ExtraLight.ttf); /* url of the font */
       }
+
+      @font-face {
+        font-family: Mont; /* set name */
+        src: url(assets/fonts/mont/fonnts.com-Mont_Blanc_ExtraLight.ttf); /* url of the font */
+      }
+
       .mont {
         font-family: Mont;
       }
+
+      .titlefont {
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+      }
     </style>
   </head>
-  <body class="bg-white text-stone-800 antialiased">
+  <body class="bg-white text-stone-800 antialiased mont">
     <!-- HEADER (strictement comme la maquette: 2 onglets + téléphone) -->
     <header
       class="bg-white/95 backdrop-blur border-b border-[#f3b7c2] sticky top-0 z-50"
@@ -128,7 +151,7 @@
           />
         </div>
         <article class="text-white">
-          <h2 class="text-2xl md:text-3xl font-extrabold">
+          <h2 class="text-2xl md:text-3xl font-extrabold titlefont">
             Une passion devenue un métier
           </h2>
           <div class="mt-3 space-y-3 leading-relaxed">
@@ -158,7 +181,7 @@
     <!-- SECTION: Le salon Patapouf (3 cartes) -->
     <section id="salon" class="bg-white">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-        <h3 class="text-3xl font-extrabold text-gold">Le salon Patapouf</h3>
+        <h3 class="text-3xl text-gold titlefont">Le salon Patapouf</h3>
         <p class="mt-2 text-[#b8942f] max-w-2xl">
           Mon salon de 60 m², situé à Mouans‑Sartoux (23 chemin des Plaines,
           06370), est pensé avant tout pour le bien‑être des animaux et le
@@ -166,7 +189,6 @@
         </p>
 
         <div class="mt-6 grid md:grid-cols-3 gap-6">
-
           <!-- Card 1 -->
           <article class="rounded-3xl overflow-hidden bg-white">
             <img
@@ -175,10 +197,10 @@
               alt="Le patio"
             />
             <div
-              class="border-[#f3b7c2] border-3 border-x-3 border-b-3 rounded-b-3xl bg-white border-t-0"
+              class="border-[#f3b7c2] border-2 border-x-2 border-b-2 rounded-b-3xl bg-white border-t-0"
             >
               <div class="p-6 h-46 text-center">
-                <h4 class="text-xl font-extrabold text-gold">Le patio</h4>
+                <h4 class="text-xl titlefont text-gold">Le patio</h4>
                 <p class="mt-2 text-gold text-m" data-placeholder>
                   Dès leur arrivée, les chiens sont accueillis en liberté dans
                   un espace sécurisé, afin qu’ils se sentent rapidement en
@@ -189,46 +211,42 @@
           </article>
 
           <!-- Card 2 -->
-          <article
-            class="rounded-3xl overflow-hidden bg-white"
-          >
+          <article class="rounded-3xl overflow-hidden bg-white">
             <img
               src="assets/detente.jpeg"
               class="w-full h-64 object-cover"
               alt="Le coin détente"
             />
             <div
-              class="border-[#f3b7c2] border-3 border-x-3 border-b-3 rounded-b-3xl bg-white border-t-0"
+              class="border-[#f3b7c2] border-2 border-x-2 border-b-2 rounded-b-3xl bg-white border-t-0"
             >
-            <div class="p-6 h-46 text-center">
-              <h4 class="text-xl font-extrabold text-gold">Le coin détente</h4>
-              <p class="mt-2 text-gold text-m" data-placeholder>
-                Côté client, un coin détente est à disposition avec café et thé,
-                pour patienter confortablement et même assister au toilettage si
-                vous le souhaitez..
-              </p>
-            </div>
+              <div class="p-6 h-46 text-center">
+                <h4 class="text-xl titlefont text-gold">Le coin détente</h4>
+                <p class="mt-2 text-gold text-m" data-placeholder>
+                  Côté client, un coin détente est à disposition avec café et
+                  thé, pour patienter confortablement et même assister au
+                  toilettage si vous le souhaitez..
+                </p>
+              </div>
             </div>
           </article>
           <!-- Card 3 -->
-          <article
-            class="rounded-3xl overflow-hidden bg-white"
-          >
+          <article class="rounded-3xl overflow-hidden bg-white">
             <img
               src="assets/reception.jpeg"
               class="w-full h-64 object-cover"
               alt="Le coin détente"
             />
             <div
-              class="border-[#f3b7c2] border-3 border-x-3 border-b-3 rounded-b-3xl bg-white border-t-0"
+              class="border-[#f3b7c2] border-2 border-x-2 border-b-2 rounded-b-3xl bg-white border-t-0"
             >
-            <div class="p-6 h-46 text-center">
-              <h4 class="text-xl font-extrabold text-gold">L’accessibilité</h4>
-              <p class="mt-2 text-gold text-m" data-placeholder>
-                Des places de parking sont disponibles juste devant le salon
-                pour plus de praticité.
-              </p>
-            </div>
+              <div class="p-6 h-46 text-center">
+                <h4 class="text-xl titlefont text-gold">L’accessibilité</h4>
+                <p class="mt-2 text-gold text-m" data-placeholder>
+                  Des places de parking sont disponibles juste devant le salon
+                  pour plus de praticité.
+                </p>
+              </div>
             </div>
           </article>
         </div>
@@ -241,12 +259,12 @@
         <div class="grid lg:grid-cols-[1.2fr_.9fr] items-stretch">
           <!-- Bloc texte blanc bord rose -->
           <article
-            class="bg-white/95 rounded-l-[28px] border-3 border-[#f3b7c2] border-r-0 p-6 md:p-8"
+            class="bg-white/95 rounded-l-[28px] border-2 border-[#f3b7c2] border-r-0 sm:border-2 sm:border-b-0 sm:rounded-t-[28px] sm:rounded-b-none p-6 md:p-8"
           >
-            <h3 class="text-center text-2xl font-extrabold text-gold">
+            <h3 class="text-center text-2xl titlefont text-gold">
               Une approche unique
             </h3>
-            <p class="mt-4 text-center">
+            <p class="mt-4 text-center text-gold">
               Ce qui différencie Patapouf, c'est son approche
               <b>spa spécialisée en ozonothérapie</b>.<br />
               Cette technique permet de soulager et d'améliorer de nombreuses
@@ -263,51 +281,25 @@
                 <button
                   type="button"
                   aria-label="Précédent"
-                  class="hidden cursor-pointer sm:flex absolute -left-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full border border-gold/40 text-gold hover:bg-gold/10 transition z-20"
+                  class="hidden cursor-pointer sm:flex absolute -left-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full text-gold hover:bg-gold/10 transition z-20"
                   data-prev
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m15 19-7-7 7-7"
-                    />
-                  </svg>
+                  <img src="assets/icon/left.png" alt="" />
                 </button>
 
                 <!-- bouton suivant -->
                 <button
                   type="button"
                   aria-label="Suivant"
-                  class="hidden cursor-pointer sm:flex absolute -right-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full border border-gold/40 text-gold hover:bg-gold/10 transition z-20"
+                  class="hidden cursor-pointer sm:flex absolute -right-3 top-2/5 -translate-y-1/2 items-center justify-center w-10 h-10 rounded-full text-gold hover:bg-gold/10 transition z-20"
                   data-next
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m9 5 7 7-7 7"
-                    />
-                  </svg>
+                  <img src="assets/icon/right.png" alt="" />
                 </button>
 
                 <!-- Lignée 1 -->
                 <div
-                  class="grid grid-cols-2 px-6 md:grid-cols-4 gap-6 absolute inset-0 opacity-100 transition-opacity duration-500 ease-in-out place-items-center"
+                  class="grid grid-cols-4 px-6 md:grid-cols-4 gap-6 absolute inset-0 opacity-100 transition-opacity duration-500 ease-in-out place-items-center"
                   data-slide
                 >
                   <!-- Alopécie -->
@@ -377,7 +369,7 @@
 
                 <!-- Lignée 2 -->
                 <div
-                  class="grid grid-cols-2 md:grid-cols-4 px-6 gap-6 absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out place-items-center"
+                  class="grid grid-cols-4 md:grid-cols-4 px-6 gap-6 absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out place-items-center"
                   data-slide
                 >
                   <!-- Peau sèche / grasse -->
@@ -450,18 +442,18 @@
             <!-- fin data-ozono -->
 
             <!-- libellés sous forme de texte simple (optionnel) -->
-            <div class="sr-only">
+            <div class="sr-only text-gold">
               Lignée 1 : Alopécie, Dermatites, Leishmaniose, Allergies. Lignée 2
               : Peau sèche ou grasse, Plaies ou démangeaisons, Stress,
               Bien-être.
             </div>
 
-            <p class="mt-6">
+            <p class="mt-6 text-gold text-center">
               Pour garantir la meilleure qualité, j'utilise les
               <b>produits haut de gamme Iv San Bernard</b>, disponibles via mon
               partenaire <b>GroomAttitude</b>.
             </p>
-            <p class="mt-3">
+            <p class="mt-3 text-gold text-center">
               Chez Patapouf, chaque animal est accueilli
               <b>avec douceur et professionnalisme</b>, dans une ambiance
               sereine où le respect et l'amour des animaux sont au cœur de
@@ -585,7 +577,6 @@
       </div>
     </section>
 
-    <!-- BANDE ROSE: Nos prestations & tarifs -->
     <!-- BANDE ROSE -->
     <section class="bg-[#f4acba]">
       <div
@@ -622,65 +613,100 @@
     </section>
 
     <!-- CONTENU TARIFS piloté par JSON -->
-    <section id="prestations" class="bg-[#f5efe6]">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-        <!-- 2 vues superposées (on n’en montre qu’une à la fois) -->
-        <div class="relative">
-          <!-- Chiens -->
-          <div
-            id="dogsView"
-            class="grid md:grid-cols-3 gap-6 transition-opacity duration-300 opacity-100"
-          ></div>
+<section id="prestations" class="bg-[#f5efe6]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
-          <!-- Chats -->
-          <div
-            id="catsView"
-            class="transition-opacity duration-300 opacity-0 hidden max-w-2xl mx-auto"
-          ></div>
-        </div>
+    <style>
+      /* ===== Switcher & Animations ===== */
+      #viewsSwitcher {
+        position: relative;
+        overflow: hidden;                  /* compat large, évite overflow: clip */
+        transition: height 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      /* On superpose après mesure (voir init JS) */
+      #viewsSwitcher.layered .view {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+      }
 
-        <div class="text-center mt-8">
-          <button
-            id="downloadPdfBtn"
-            type="button"
-            class="rounded-full border border-[#f3b7c2] text-[#f090a5] px-5 py-1.5 text-sm bg-white"
-          >
-            Voir les autres races
-          </button>
-        </div>
-      </div>
-    </section>
+      .view {
+        transition:
+          transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity   360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+        will-change: transform, opacity;
+      }
 
-    <script>
-      // --- PDF download ---
-      const PDF_URL = "assets/prestation_et_tarif.pdf";
-      const FILE_NAME = "prestation_et_tarif.pdf";
-      document
-        .getElementById("downloadPdfBtn")
-        .addEventListener("click", () => {
-          const a = document.createElement("a");
-          a.href = PDF_URL;
-          a.download = FILE_NAME;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-        });
+      /* États visibles/cachés (sans display none) */
+      .is-active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        pointer-events: auto;
+        visibility: visible;
+      }
+      .is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden; /* garde la place quand non-layered, et évite focus */
+      }
 
-      // --- Data-driven render ---
-      const PRICE_JSON = "assets/prices.json";
-      const $dogs = document.getElementById("dogsView");
-      const $cats = document.getElementById("catsView");
-      const $btnDogs = document.getElementById("btnDogs");
-      const $btnCats = document.getElementById("btnCats");
+      /* Prépositions directionnelles pour entrée/sortie */
+      .from-right { transform: translateX(40px) scale(0.98); }
+      .to-left   { transform: translateX(-40px) scale(0.98); }
+      .from-left { transform: translateX(-40px) scale(0.98); }
+      .to-right  { transform: translateX(40px)  scale(0.98); }
 
-      const formatPrice = (p) => (p == null ? "—" : `${p}€`);
+      @media (prefers-reduced-motion: reduce) {
+        #viewsSwitcher { transition: none !important; }
+        .view { transition: none !important; }
+      }
+    </style>
 
-      function serviceListHTML(services) {
-        const labels = services.map((s) => `<li>${s.label}</li>`).join("");
-        const prices = services
-          .map((s) => `<li>${formatPrice(s.price)}</li>`)
-          .join("");
-        return `
+    <!-- 2 vues (chiens/grille, chats/colonne) -->
+    <div id="viewsSwitcher" class="relative">
+      <div id="dogsView" class="view grid md:grid-cols-3 gap-6"></div>
+      <div id="catsView" class="view max-w-2xl mx-auto"></div>
+    </div>
+
+    <div class="text-center mt-8">
+      <button
+        id="downloadPdfBtn"
+        type="button"
+        class="rounded-full border border-[#f3b7c2] text-[#f090a5] px-5 py-1.5 text-sm bg-white"
+      >
+        Voir les autres races
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // --- PDF download ---
+  const PDF_URL = "assets/prestation_et_tarif.pdf";
+  const FILE_NAME = "prestation_et_tarif.pdf";
+  document.getElementById("downloadPdfBtn").addEventListener("click", () => {
+    const a = document.createElement("a");
+    a.href = PDF_URL;
+    a.download = FILE_NAME;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  });
+
+  // --- Data-driven render ---
+  const PRICE_JSON = "assets/prices.json";
+  const $switcher = document.getElementById("viewsSwitcher");
+  const $dogs = document.getElementById("dogsView");
+  const $cats = document.getElementById("catsView");
+  const $btnDogs = document.getElementById("btnDogs");
+  const $btnCats = document.getElementById("btnCats");
+
+  const formatPrice = (p) => (p == null ? "—" : `${p}€`);
+
+  function serviceListHTML(services) {
+    const labels = services.map((s) => `<li>${s.label}</li>`).join("");
+    const prices = services.map((s) => `<li>${formatPrice(s.price)}</li>`).join("");
+    return `
       <div class="mt-4 flex justify-center">
         <div class="grid grid-cols-[auto_auto] items-start">
           <ul class="space-y-2 text-[#b8942f] font-semibold text-base text-left pr-10">
@@ -692,100 +718,156 @@
         </div>
       </div>
     `;
-      }
+  }
 
-      const dogCard = (b) => `
+  const dogCard = (b) => `
     <article class="rounded-3xl bg-white px-6 py-5 shadow-sm border border-stone-200">
-      <h4 class="text-[#b8942f] text-2xl font-extrabold text-center">${
-        b.breed
-      }</h4>
+      <h4 class="text-[#b8942f] text-2xl titlefont text-center">${b.breed}</h4>
       ${serviceListHTML(b.services)}
     </article>
   `;
 
-      const catCard = (c) => `
+  const catCard = (c) => `
     <article class="rounded-3xl bg-white px-6 py-5 shadow-sm border border-stone-200 text-center">
-      <h4 class="text-[#b8942f] text-xl font-extrabold mb-2">${c.breed}</h4>
+      <h4 class="text-[#b8942f] text-xl titlefont mb-2">${c.breed}</h4>
       ${serviceListHTML(c.services)}
     </article>
   `;
 
-      let currentView = "dogs";
+  let currentView = "dogs";
+  let isAnimating = false;
 
-      function setActiveTab(which) {
-        const activeDog = which === "dogs";
-        $btnDogs.classList.toggle("underline", activeDog);
-        $btnDogs.classList.toggle("font-semibold", activeDog);
-        $btnDogs.classList.toggle("text-white/80", !activeDog);
-        $btnCats.classList.toggle("underline", !activeDog);
-        $btnCats.classList.toggle("font-semibold", !activeDog);
-        $btnCats.classList.toggle("text-white/80", activeDog);
-      }
+  function setActiveTab(which) {
+    const activeDog = which === "dogs";
+    if ($btnDogs && $btnCats) {
+      $btnDogs.classList.toggle("underline", activeDog);
+      $btnDogs.classList.toggle("font-semibold", activeDog);
+      $btnDogs.classList.toggle("text-white/80", !activeDog);
+      $btnCats.classList.toggle("underline", !activeDog);
+      $btnCats.classList.toggle("font-semibold", !activeDog);
+      $btnCats.classList.toggle("text-white/80", activeDog);
+    }
+  }
 
-      const FADE_MS = 300; // doit matcher duration-300
+ function measureHeight(el) {
+  const prevPos = el.style.position;
+  const prevVis = el.style.visibility;
+  const prevPE  = el.style.pointerEvents;
+  const wasHidden = el.classList.contains("is-hidden");
 
-      let isAnimating = false;
-      function fadeSwitch(to) {
-        if (to === currentView || isAnimating) return;
-        isAnimating = true;
+  // 1) Met la vue en flux normal, invisible, cliquable = off
+  el.style.position = "static";     // <— important: quitte le absolute du mode "layered"
+  el.style.visibility = "hidden";
+  el.style.pointerEvents = "none";
 
-        const hideEl = currentView === "dogs" ? $dogs : $cats;
-        const showEl = to === "dogs" ? $dogs : $cats;
+  // 2) Assure-toi qu’elle est “active” pour que scrollHeight reflète son contenu
+  el.classList.remove("is-hidden");
+  el.classList.add("is-active");
 
-        // fade out current
-        hideEl.classList.add("opacity-0");
-        setTimeout(() => {
-          hideEl.classList.add("hidden");
-          hideEl.classList.remove("opacity-0"); // reset pour la prochaine fois
-        }, FADE_MS);
+  // 3) Mesure
+  const h = el.scrollHeight;
 
-        // fade in next
-        showEl.classList.remove("hidden");
-        showEl.classList.add("opacity-0"); // point de départ transparent
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            showEl.classList.remove("opacity-0"); // vers opaque
-          });
-        });
+  // 4) Restaure l’état
+  if (wasHidden) {
+    el.classList.add("is-hidden");
+    el.classList.remove("is-active");
+  }
+  el.style.position = prevPos;
+  el.style.visibility = prevVis;
+  el.style.pointerEvents = prevPE;
 
-        currentView = to;
-        setActiveTab(to);
+  return h;
+}
 
-        setTimeout(() => {
-          isAnimating = false;
-        }, FADE_MS);
-      }
+// Optionnel: évite de trop écraser (petit plancher visuel)
+const MIN_H = 220;
 
-      // Load JSON, render both views (chiens visibles par défaut)
-      fetch(PRICE_JSON)
-        .then((r) => r.json())
-        .then((data) => {
-          $dogs.classList.add("transition-opacity", "duration-300");
-          $cats.classList.add("transition-opacity", "duration-300");
+function animateHeightTo(el) {
+  const targetH = Math.max(measureHeight(el), MIN_H);
+  $switcher.style.height = targetH + "px";
+}
 
-          // état initial : chiens visibles, chats cachés
-          $dogs.classList.remove("hidden", "opacity-0");
-          $cats.classList.add("hidden", "opacity-0");
-          $dogs.innerHTML = data.dogs.map(dogCard).join("");
-          $cats.innerHTML = data.cats
-            .map(catCard)
-            .join('<div class="h-6"></div>');
+// Dans l'init, utilise la mesure “naturelle”
+function prepInitialLayout() {
+  $dogs.classList.add("is-active");
+  $cats.classList.add("is-hidden", "from-right");
 
-          // Tabs behavior
-          $btnDogs.addEventListener("click", () => fadeSwitch("dogs"));
-          $btnCats.addEventListener("click", () => fadeSwitch("cats"));
+  const h = measureHeight($dogs);        // <— au lieu de $dogs.scrollHeight
+  $switcher.style.height = h + "px";
 
-          setActiveTab("dogs"); // état initial
-        })
-        .catch((err) => console.error("Erreur chargement tarifs:", err));
-    </script>
+  $switcher.classList.add("layered");
+}
+
+  function switchView(to) {
+    if (to === currentView || isAnimating) return;
+    isAnimating = true;
+
+    const fromEl = currentView === "dogs" ? $dogs : $cats;
+    const toEl   = to === "dogs" ? $dogs : $cats;
+    const forward = (currentView === "dogs" && to === "cats"); // dogs -> cats
+
+    // Reset états directionnels
+    fromEl.classList.remove("from-right","from-left","to-left","to-right");
+    toEl.classList.remove("from-right","from-left","to-left","to-right");
+
+    // Prépositionner la vue entrante
+    toEl.classList.remove("is-hidden");
+    toEl.classList.add("is-active");
+    toEl.classList.add(forward ? "from-right" : "from-left"); // démarre hors-champ
+
+    // Déclenche l'anim de hauteur
+    animateHeightTo(toEl);
+
+    // Forcer un reflow pour que le state de départ soit pris en compte
+    void toEl.offsetHeight;
+
+    // Lance les transitions : la sortante glisse dans la direction opposée
+    fromEl.classList.add(forward ? "to-left" : "to-right"); // s'éloigne
+    fromEl.classList.remove("is-active");
+    fromEl.classList.add("is-hidden");
+
+    // La vue entrante rejoint le centre
+    toEl.classList.remove("from-right","from-left");
+    toEl.classList.add("is-active");
+
+    // Fin d'anim
+    const onDone = () => {
+      fromEl.classList.remove("to-left","to-right");
+      currentView = to;
+      setActiveTab(to);
+      isAnimating = false;
+      toEl.removeEventListener("transitionend", onDone);
+    };
+    toEl.addEventListener("transitionend", onDone);
+  }
+
+  // ===== Init =====
+  fetch(PRICE_JSON)
+    .then((r) => r.json())
+    .then((data) => {
+      $dogs.innerHTML = data.dogs.map(dogCard).join("");
+      $cats.innerHTML = data.cats.map(catCard).join('<div class="h-6"></div>');
+
+      prepInitialLayout();
+
+      // Tabs externes (si présents dans ta nav)
+      if ($btnDogs) $btnDogs.addEventListener("click", () => switchView("dogs"));
+      if ($btnCats) $btnCats.addEventListener("click", () => switchView("cats"));
+
+      setActiveTab("dogs");
+    })
+    .catch((err) => console.error("Erreur chargement tarifs:", err));
+</script>
+
+
+
 
     <!-- GALERIE 3 vignettes -->
     <section class="bg-white" data-gallery>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         <!-- Titre + flèches -->
         <div class="flex items-center justify-between gap-4">
-          <h3 class="text-3xl font-extrabold text-gold">
+          <h3 class="text-3xl titlefont text-gold">
             Des chiens et chats tout propres...
           </h3>
           <div class="flex items-center gap-3 text-gold">
@@ -977,7 +1059,7 @@
       <div
         class="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-16 text-center"
       >
-        <h3 class="text-3xl font-extrabold text-gold pt-16">Les témoignages</h3>
+        <h3 class="text-3xl titlefont text-gold pt-16">Les témoignages</h3>
 
         <!-- Flèche gauche (collée au bord) -->
         <button
@@ -1002,8 +1084,8 @@
           id="slide"
           class="mt-10 h-64 flex flex-col justify-center items-center transition-all duration-300 ease-out opacity-0 translate-x-0"
         >
-          <h4 id="t-name" class="text-2xl font-extrabold text-gold"></h4>
-          <p id="t-text" class="mt-4 text-gold max-w-2xl mx-auto"></p>
+          <h4 id="t-name" class="text-3xl titlefont text-gold"></h4>
+          <p id="t-text" class="mt-4 text-gold max-w-2xl mx-auto sm:px-16"></p>
         </div>
       </div>
     </section>
@@ -1109,7 +1191,7 @@
         <img src="assets/logo_2.png" class="h-64" alt="Logo de patapouf" />
 
         <div>
-          <h5 class="font-extrabold text-lg">Adresse</h5>
+          <h5 class="titlefont text-xl">Adresse</h5>
           <p class="mt-2">23 chemin des Plaines, 06370 Mouans‑Sartoux</p>
           <div
             class="mt-3 w-full rounded-2xl overflow-hidden border border-white/30"
@@ -1126,7 +1208,7 @@
         </div>
 
         <div>
-          <h5 class="font-extrabold text-lg">Contact</h5>
+          <h5 class="titlefont text-xl">Contact</h5>
           <p class="mt-2">patapouf.toilettage@gmail.com</p>
           <a
             href="tel:+33671045195"
