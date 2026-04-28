@@ -724,23 +724,7 @@
           chien, de la pénibilité durant le toilettage ainsi que la taille du
           chien.
         </p>
-        <div class="mt-4 inline-flex items-center gap-4">
-          <button
-            id="btnDogs"
-            class="text-white px-5 py-1.5 text-m font-semibold underline underline-offset-4"
-            type="button"
-          >
-            Tarif chien
-          </button>
-          <span class="opacity-60">|</span>
-          <button
-            id="btnCats"
-            class="text-white/80 hover:text-white px-5 py-1.5 text-m"
-            type="button"
-          >
-            Tarif chat
-          </button>
-        </div>
+
       </div>
     </section>
 
@@ -748,245 +732,73 @@
 <section id="prestations" class="bg-[#f5efe6]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
-    <style>
-      /* ===== Switcher & Animations ===== */
-      #viewsSwitcher {
-        position: relative;
-        overflow: hidden;                  /* compat large, évite overflow: clip */
-        transition: height 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
-      }
-      /* On superpose après mesure (voir init JS) */
-      #viewsSwitcher.layered .view {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-      }
+    <div id="pricesView" class="relative px-8 sm:px-10"></div>
 
-      .view {
-        transition:
-          transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
-          opacity   360ms cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: transform, opacity;
-      }
 
-      /* États visibles/cachés (sans display none) */
-      .is-active {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-        pointer-events: auto;
-        visibility: visible;
-      }
-      .is-hidden {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden; /* garde la place quand non-layered, et évite focus */
-      }
-
-      /* Prépositions directionnelles pour entrée/sortie */
-      .from-right { transform: translateX(40px) scale(0.98); }
-      .to-left   { transform: translateX(-40px) scale(0.98); }
-      .from-left { transform: translateX(-40px) scale(0.98); }
-      .to-right  { transform: translateX(40px)  scale(0.98); }
-
-      @media (prefers-reduced-motion: reduce) {
-        #viewsSwitcher { transition: none !important; }
-        .view { transition: none !important; }
-      }
-    </style>
-
-    <!-- 2 vues (chiens/grille, chats/colonne) -->
-    <div id="viewsSwitcher" class="relative">
-      <div id="dogsView" class="view grid md:grid-cols-3 gap-6"></div>
-      <div id="catsView" class="view max-w-2xl mx-auto"></div>
-    </div>
-
-    <div class="text-center mt-8">
-      <button
-        id="downloadPdfBtn"
-        type="button"
-        class="rounded-full border border-[#f3b7c2] text-[#f090a5] px-5 py-1.5 text-sm bg-white"
-      >
-        Voir les autres races
-      </button>
-    </div>
   </div>
 </section>
 
 <script>
-  // --- PDF download ---
-  const PDF_URL = "assets/prestation_et_tarif.pdf";
-  const FILE_NAME = "prestation_et_tarif.pdf";
-  document.getElementById("downloadPdfBtn").addEventListener("click", () => {
-    const a = document.createElement("a");
-    a.href = PDF_URL;
-    a.download = FILE_NAME;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  });
-
   // --- Data-driven render ---
   const PRICE_JSON = "assets/prices.json";
-  const $switcher = document.getElementById("viewsSwitcher");
-  const $dogs = document.getElementById("dogsView");
-  const $cats = document.getElementById("catsView");
-  const $btnDogs = document.getElementById("btnDogs");
-  const $btnCats = document.getElementById("btnCats");
+  const $prices = document.getElementById("pricesView");
 
-  const formatPrice = (p) => (p == null ? "—" : `${p}€`);
-
-  function serviceListHTML(services) {
-    const labels = services.map((s) => `<li>${s.label}</li>`).join("");
-    const prices = services.map((s) => `<li>${formatPrice(s.price)}</li>`).join("");
-    return `
-      <div class="mt-4 flex justify-center">
-        <div class="grid grid-cols-[auto_auto] items-start">
-          <ul class="space-y-2 text-[#b8942f] font-semibold text-base text-left pr-10">
-            ${labels}
-          </ul>
-          <ul class="space-y-2 text-left pl-3 border-l border-[#b8942f]/60 text-[#b8942f] font-semibold text-base">
-            ${prices}
-          </ul>
-        </div>
+  // mirror=false → petite bulle en bas à gauche (côté gauche)
+  // mirror=true  → petite bulle en bas à droite (côté droit, symétrique)
+  const bubble = (pos, mirror = false) =>
+    `<div class="hidden sm:block absolute pointer-events-none select-none overflow-visible ${pos}" aria-hidden="true">
+      <div class="relative w-20 h-20">
+        <div class="absolute w-12 h-12 rounded-full border-2 border-[#b8942f] bg-white z-14 ${mirror ? 'top-0 left-0' : 'top-6 -right-6'}"></div>
+        <div class="absolute w-6 h-6 rounded-full border-2 border-[#b8942f] bg-white z-15 ${mirror ? 'bottom-0 right-6' : 'bottom-0 left-11'}"></div>
       </div>
-    `;
-  }
+    </div>`;
 
-  const dogCard = (b) => `
-    <article class="rounded-3xl bg-white px-6 py-5 shadow-sm border border-stone-200">
-      <h4 class="text-[#b8942f] text-2xl titlefont text-center">${b.breed}</h4>
-      ${serviceListHTML(b.services)}
-    </article>
-  `;
+  const dogCard = (b) => {
+    const servicesHTML = b.services.map(s =>
+      `<div class="py-2.5 text-center">
+        <p class="titlefont font-bold text-[#b8942f]">${s.duration} / ${s.price}€</p>
+        <p class="font-semibold text-[#b8942f] text-sm mt-0.5">${s.label}${s.note ? '<br><span class="text-xs font-normal opacity-70">( ' + s.note + ' )</span>' : ''}</p>
+      </div>`
+    ).join('');
+    return `
+      <article class="rounded-3xl bg-white px-6 py-6 shadow-sm border border-stone-200">
+        <h4 class="text-[#b8942f] text-xl titlefont text-center leading-snug">${b.size}</h4>
+        <h5 class="text-[#b8942f] text-xl titlefont text-center leading-snug">${b.coat}</h5>
+        <p class="mt-2 text-[#b8942f]/70 text-sm text-center">${b.breeds}</p>
+        <div class="mt-4 divide-y divide-[#b8942f]/20">${servicesHTML}</div>
+      </article>`;
+  };
 
-  const catCard = (c) => `
-    <article class="rounded-3xl bg-white px-6 py-5 shadow-sm border border-stone-200 text-center">
-      <h4 class="text-[#b8942f] text-xl titlefont mb-2">${c.breed}</h4>
-      ${serviceListHTML(c.services)}
-    </article>
-  `;
-
-  let currentView = "dogs";
-  let isAnimating = false;
-
-  function setActiveTab(which) {
-    const activeDog = which === "dogs";
-    if ($btnDogs && $btnCats) {
-      $btnDogs.classList.toggle("underline", activeDog);
-      $btnDogs.classList.toggle("font-semibold", activeDog);
-      $btnDogs.classList.toggle("text-white/80", !activeDog);
-      $btnCats.classList.toggle("underline", !activeDog);
-      $btnCats.classList.toggle("font-semibold", !activeDog);
-      $btnCats.classList.toggle("text-white/80", activeDog);
-    }
-  }
-
- function measureHeight(el) {
-  const prevPos = el.style.position;
-  const prevVis = el.style.visibility;
-  const prevPE  = el.style.pointerEvents;
-  const wasHidden = el.classList.contains("is-hidden");
-
-  // 1) Met la vue en flux normal, invisible, cliquable = off
-  el.style.position = "static";     // <— important: quitte le absolute du mode "layered"
-  el.style.visibility = "hidden";
-  el.style.pointerEvents = "none";
-
-  // 2) Assure-toi qu’elle est “active” pour que scrollHeight reflète son contenu
-  el.classList.remove("is-hidden");
-  el.classList.add("is-active");
-
-  // 3) Mesure
-  const h = el.scrollHeight;
-
-  // 4) Restaure l’état
-  if (wasHidden) {
-    el.classList.add("is-hidden");
-    el.classList.remove("is-active");
-  }
-  el.style.position = prevPos;
-  el.style.visibility = prevVis;
-  el.style.pointerEvents = prevPE;
-
-  return h;
-}
-
-// Optionnel: évite de trop écraser (petit plancher visuel)
-const MIN_H = 220;
-
-function animateHeightTo(el) {
-  const targetH = Math.max(measureHeight(el), MIN_H);
-  $switcher.style.height = targetH + "px";
-}
-
-// Dans l'init, utilise la mesure “naturelle”
-function prepInitialLayout() {
-  $dogs.classList.add("is-active");
-  $cats.classList.add("is-hidden", "from-right");
-
-  const h = measureHeight($dogs);        // <— au lieu de $dogs.scrollHeight
-  $switcher.style.height = h + "px";
-
-  $switcher.classList.add("layered");
-}
-
-  function switchView(to) {
-    if (to === currentView || isAnimating) return;
-    isAnimating = true;
-
-    const fromEl = currentView === "dogs" ? $dogs : $cats;
-    const toEl   = to === "dogs" ? $dogs : $cats;
-    const forward = (currentView === "dogs" && to === "cats"); // dogs -> cats
-
-    // Reset états directionnels
-    fromEl.classList.remove("from-right","from-left","to-left","to-right");
-    toEl.classList.remove("from-right","from-left","to-left","to-right");
-
-    // Prépositionner la vue entrante
-    toEl.classList.remove("is-hidden");
-    toEl.classList.add("is-active");
-    toEl.classList.add(forward ? "from-right" : "from-left"); // démarre hors-champ
-
-    // Déclenche l'anim de hauteur
-    animateHeightTo(toEl);
-
-    // Forcer un reflow pour que le state de départ soit pris en compte
-    void toEl.offsetHeight;
-
-    // Lance les transitions : la sortante glisse dans la direction opposée
-    fromEl.classList.add(forward ? "to-left" : "to-right"); // s'éloigne
-    fromEl.classList.remove("is-active");
-    fromEl.classList.add("is-hidden");
-
-    // La vue entrante rejoint le centre
-    toEl.classList.remove("from-right","from-left");
-    toEl.classList.add("is-active");
-
-    // Fin d'anim
-    const onDone = () => {
-      fromEl.classList.remove("to-left","to-right");
-      currentView = to;
-      setActiveTab(to);
-      isAnimating = false;
-      toEl.removeEventListener("transitionend", onDone);
-    };
-    toEl.addEventListener("transitionend", onDone);
-  }
+  const catCard = (c) => {
+    const servicesHTML = c.services.map(s =>
+      `<div class="py-2.5 text-center">
+        <p class="titlefont font-bold text-[#b8942f]">${s.duration} / ${s.price}€</p>
+        <p class="font-semibold text-[#b8942f] text-sm mt-0.5">${s.label}</p>
+      </div>`
+    ).join('');
+    return `
+      <article class="rounded-3xl bg-white px-6 py-6 shadow-sm border border-stone-200">
+        <h4 class="text-[#b8942f] text-2xl titlefont text-center">Chat</h4>
+        <div class="mt-4 divide-y divide-[#b8942f]/20">${servicesHTML}</div>
+      </article>`;
+  };
 
   // ===== Init =====
   fetch(PRICE_JSON)
     .then((r) => r.json())
     .then((data) => {
-      $dogs.innerHTML = data.dogs.map(dogCard).join("");
-      $cats.innerHTML = data.cats.map(catCard).join('<div class="h-6"></div>');
-
-      prepInitialLayout();
-
-      // Tabs externes (si présents dans ta nav)
-      if ($btnDogs) $btnDogs.addEventListener("click", () => switchView("dogs"));
-      if ($btnCats) $btnCats.addEventListener("click", () => switchView("cats"));
-
-      setActiveTab("dogs");
+      const allCards = [
+        ...data.dogs.map(dogCard),
+        ...data.cats.map(catCard)
+      ].join('');
+      // 8 cards (7 dogs + 1 chat) : dernière rangée = 2 cartes => OK sans col-start trick
+      $prices.innerHTML =
+        bubble('-top-8 -left-10') +
+        bubble('-top-8 -right-10', true) +
+        bubble('top-[40%] -left-10') +
+        bubble('top-[40%] -right-10', true) +
+        bubble('-bottom-8 left-[28%]') +
+        `<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">${allCards}</div>`;
     })
     .catch((err) => console.error("Erreur chargement tarifs:", err));
 </script>

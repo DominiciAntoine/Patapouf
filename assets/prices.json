@@ -1,132 +1,83 @@
 {
   "dogs": [
     {
-      "breed": "Berger Australien",
+      "size": "Petit chien",
+      "coat": "Poils courts",
+      "breeds": "Chihuahua, Pinscher, Carlin...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 55 },
-        { "label": "Bain + Coupe", "price": 70 },
-        { "label": "Spa (sans coupe)", "price": 70 }
+        { "duration": "1h",   "price": 40, "label": "Bain + Séchage" },
+        { "duration": "1h30", "price": 50, "label": "Spa + Séchage", "note": "pas de démêlage" }
       ]
     },
     {
-      "breed": "Bichon",
+      "size": "Moyen chien",
+      "coat": "Poils courts",
+      "breeds": "Beagle, Staffie, Bulldog anglais, Bouledogue américain...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 35 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 50 }
+        { "duration": "1h",   "price": 45, "label": "Bain + Séchage" },
+        { "duration": "1h30", "price": 60, "label": "Spa + Séchage", "note": "pas de démêlage" }
       ]
     },
     {
-      "breed": "Border Collie",
+      "size": "Grand chien",
+      "coat": "Poils courts",
+      "breeds": "Labrador, Braque, Dalmatien, Boxer...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 55 },
-        { "label": "Bain + Coupe", "price": 70 },
-        { "label": "Spa (sans coupe)", "price": 70 }
+        { "duration": "1h30", "price": 55, "label": "Bain + Séchage" },
+        { "duration": "2h",   "price": 80, "label": "Spa + Séchage", "note": "pas de démêlage" }
       ]
     },
     {
-      "breed": "Bouvier Bernois",
+      "size": "Petit chien",
+      "coat": "Poils longs",
+      "breeds": "Yorkshire, Bichon, Shih-tzu, Lhassa Apso, Maltipoo...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 75 },
-        { "label": "Bain + Coupe", "price": 90 },
-        { "label": "Spa (sans coupe)", "price": null }
+        { "duration": "1h30", "price": 45, "label": "Bain + Séchage + Démêlage léger" },
+        { "duration": "1h30", "price": 60, "label": "Bain + Séchage + Démêlage léger + Coupe" },
+        { "duration": "2h",   "price": 60, "label": "Bain + Séchage + Démêlage important" },
+        { "duration": "2h",   "price": 60, "label": "Spa + Séchage", "note": "pas de démêlage" }
       ]
     },
     {
-      "breed": "Caniche",
+      "size": "Moyen chien",
+      "coat": "Poils longs",
+      "breeds": "Cocker, Spitz, Cavalier King Charles...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 45 },
-        { "label": "Bain + Coupe", "price": 60 },
-        { "label": "Spa (sans coupe)", "price": 60 }
+        { "duration": "1h30", "price": 50, "label": "Bain + Séchage + Démêlage léger" },
+        { "duration": "2h",   "price": 65, "label": "Bain + Séchage + Démêlage léger + Coupe" },
+        { "duration": "2h",   "price": 65, "label": "Bain + Séchage + Démêlage important" },
+        { "duration": "2h",   "price": 70, "label": "Spa + Séchage", "note": "pas de démêlage" }
       ]
     },
     {
-      "breed": "Cavalier King Charles",
+      "size": "Grand chien",
+      "coat": "Poils longs / Sous poils",
+      "breeds": "Berger Australien, Border Collie, Golden Retriever, Husky, Akita...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 40 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 50 }
+        { "duration": "1h30", "price": 60, "label": "Bain + Séchage + Démêlage léger" },
+        { "duration": "2h",   "price": 75, "label": "Bain + Séchage + Démêlage léger + Coupe" },
+        { "duration": "2h",   "price": 75, "label": "Bain + Séchage + Démêlage important" },
+        { "duration": "2h",   "price": 80, "label": "Spa + Séchage", "note": "pas de démêlage, dans la mesure du possible" }
       ]
     },
     {
-      "breed": "Chihuahua",
+      "size": "Très grand chien",
+      "coat": "Poils longs / Sous poils",
+      "breeds": "Samoyède, Chow-chow, Terre-Neuve, Bouvier Bernois...",
       "services": [
-        { "label": "Bain + Démêlage", "price": 30 },
-        { "label": "Bain + Coupe", "price": 40 },
-        { "label": "Spa (sans coupe)", "price": 40 }
-      ]
-    },
-    {
-      "breed": "Cocker",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 45 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 60 }
-      ]
-    },
-    {
-      "breed": "Golden Retriever",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 55 },
-        { "label": "Bain + Coupe", "price": 70 },
-        { "label": "Spa (sans coupe)", "price": 70 }
-      ]
-    },
-    {
-      "breed": "Husky",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 70 },
-        { "label": "Bain + Coupe", "price": null },
-        { "label": "Spa (sans coupe)", "price": null }
-      ]
-    },
-    {
-      "breed": "Lhassa Apso",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 35 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 50 }
-      ]
-    },
-    {
-      "breed": "Pomsky",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 45 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 60 }
-      ]
-    },
-    {
-      "breed": "Shih Tzu",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 35 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 50 }
-      ]
-    },
-    {
-      "breed": "Spitz",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 45 },
-        { "label": "Bain + Coupe", "price": 55 },
-        { "label": "Spa (sans coupe)", "price": 60 }
-      ]
-    },
-    {
-      "breed": "Yorkshire",
-      "services": [
-        { "label": "Bain + Démêlage", "price": 35 },
-        { "label": "Bain + Coupe", "price": 50 },
-        { "label": "Spa (sans coupe)", "price": 50 }
+        { "duration": "2h", "price": 75, "label": "Bain + Séchage + Démêlage léger" },
+        { "duration": "2h", "price": 90, "label": "Bain + Séchage + Démêlage léger + Coupe" },
+        { "duration": "3h", "price": 90, "label": "Bain + Séchage + Démêlage important" }
       ]
     }
   ],
   "cats": [
     {
-      "breed": "Tous types de chat",
       "services": [
-        { "label": "Brossage", "price": 40 },
-        { "label": "Bain + Brossage", "price": 50 }
+        { "duration": "1h",   "price": 40, "label": "Démêlage léger" },
+        { "duration": "1h30", "price": 55, "label": "Démêlage léger + Tonte" },
+        { "duration": "1h30", "price": 70, "label": "Tonte intégrale" },
+        { "duration": "2h",   "price": 70, "label": "Bain + Séchage + Démêlage léger" }
       ]
     }
   ]
